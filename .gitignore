@@ -1,0 +1,17 @@
+node_modules/
+/releases/
+*.tgz
+*.zip
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+scripts/*-result.json
+coverage/
+.preview*/
+# Never commit local browser profiles or recordings.
+data/
+profiles/
+recordings/

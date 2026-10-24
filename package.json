@@ -1,0 +1,19 @@
+{
+  "name": "@local/dsh-browser-flock",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated local browser instances, proxies, extensions and recordings for DeepSeek Harness",
+  "license": "MIT",
+  "engines": { "node": ">=22", "dsh": "0.2.1-rc.3" },
+  "dependencies": {"@deepseek-ai/dsh-typert-protocol":"0.2.1-rc.3","@deepseek-ai/dsh-tools":"0.2.1-rc.3","@deepseek-ai/dsh-sandbox":"0.2.1-rc.3"},
+  "exports": {".": "./src/host/index.js", "./client": "./client.js", "./locale/*.json": "./locale/*.json", "./icon": "./icon.svg"},
+  "files": ["src", "client.js", "cordis.patch.yml", "locale", "icon.svg", "README.md", "README.en.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "RELEASING.md", "docs"],
+  "dsh": {"bundle": {"patch":"./cordis.patch.yml"}, "client":{"platform":"web","immediately":true}},
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "prepack": "node scripts/prepack.mjs"
+  }
+}
