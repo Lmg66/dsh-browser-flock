@@ -6,7 +6,7 @@
 
 为不同账号创建独立的浏览器数据目录，通过 AI 批量启动实例、配置代理、加载相同扩展，并录制浏览器操作及 HTTP 请求。持久实例保留各自的登录状态，临时实例在确认退出后删除数据。
 
-> Windows · `0.1.0` · DeepSeek Harness `0.2.1-rc.3` · MIT
+> Windows · `0.1.2` · DeepSeek Harness `0.2.1-rc.5` · MIT
 >
 > 主要适配 **Windows + Chrome**。Edge、Brave、Firefox 做过有限实机验证，仍有已知问题；macOS / Linux 当前不支持。
 
@@ -40,18 +40,19 @@
 | Windows + Firefox | 验证过发现、持久实例生命周期及 HTTP 代理；不支持本插件的 CDP、录制和扩展中心 |
 | macOS / Linux | 当前 Host 会拒绝加载，欢迎后续开发适配 |
 
-公开源码 v0.1.0 已通过构建、语法检查和 **141/141 项自动化测试**。最近一轮 Windows 实机测试中，四浏览器 HTTP 代理通过，三种 Chromium 的录制和扩展集成断言通过。完整范围与未通过项见 [测试说明](docs/TESTING.md)。这些结果不代表所有浏览器版本、扩展或网站都兼容。
+v0.1.2 已在 Harness `0.2.1-rc.5` 依赖下通过构建、语法检查和 **141/141 项自动化测试**，恢复并内嵌四种浏览器的品牌图标。rc.5 适配阶段已验证本机安装、AI 查询工具、Client 插槽注册与原有数据读取；图标修复后的页面视觉效果尚未重新核验。此前 rc.3 的 Windows 实机测试中，四浏览器 HTTP 代理通过，三种 Chromium 的录制和扩展集成断言通过。完整范围与未通过项见 [测试说明](docs/TESTING.md)。这些结果不代表所有浏览器版本、扩展或网站都兼容。
 
 ## 安装
 
-1. 安装 **DeepSeek Harness `0.2.1-rc.3`**，并自行安装 Chrome 等浏览器。开发及独立脚本需要 Node.js 22+。
-2. 从本仓库 GitHub **Releases** 下载 `local-dsh-browser-flock-0.1.0.tgz`，保存到本机。可使用附件中的 SHA-256 校验值核对文件。
+1. 安装 **DeepSeek Harness `0.2.1-rc.5`**，并自行安装 Chrome 等浏览器。开发及独立脚本需要 Node.js 22+。旧版插件 v0.1.0 对应 Harness rc.3。
+2. 从 [GitHub Releases v0.1.2](https://github.com/Lmg66/dsh-browser-flock/releases/tag/v0.1.2) 下载 `local-dsh-browser-flock-0.1.2.tgz`，保存到本机；可用随附 SHA-256 校验值核对。也可从源码执行 `pnpm install --frozen-lockfile --ignore-scripts`、`pnpm pack --pack-destination releases` 生成。
 3. 在 Harness 对话中发送，替换为文件实际路径：
 
 ```text
 请用 plugin_manager 的 install_bundle 安装这个浏览器群插件：
-C:\Downloads\local-dsh-browser-flock-0.1.0.tgz
+C:\Downloads\local-dsh-browser-flock-0.1.2.tgz
 请检查安装结果中的 application、warnings 和 nextStep。
+若返回 already-installed，先用 remove_bundle 移除 @local/dsh-browser-flock 的安装登记，再安装新包；保留原有浏览器数据目录。
 ```
 
 安装应用成功后刷新 Harness 页面，在侧栏寻找 **浏览器群 / Browser Flock**。
@@ -138,7 +139,7 @@ pnpm pack --pack-destination releases
 
 ## 效果截图
 
-以下为用户提供的真实管理界面截图，展示实例管理、本机浏览器发现和录制事件详情。截图来自现有安装环境；v0.1.0 发布包使用原创字母图标，图标外观与截图有所不同。
+以下为用户提供的真实管理界面截图，展示实例管理、本机浏览器发现和录制事件详情。v0.1.2 已恢复浏览器品牌图标，并将图片嵌入分发包，离线安装也能显示。
 
 ### 实例管理
 

@@ -6,7 +6,7 @@
 
 Create separate browser profiles for different accounts. Ask AI to launch multiple instances, assign proxies, load the same extensions, and record browser interactions and HTTP traffic. Persistent instances retain their own sign-in state; temporary profiles are removed after confirmed browser exit.
 
-> Windows · `0.1.0` · DeepSeek Harness `0.2.1-rc.3` · MIT
+> Windows · `0.1.2` · DeepSeek Harness `0.2.1-rc.5` · MIT
 >
 > **Windows + Chrome** is the primary development environment. Edge, Brave and Firefox have limited real-browser coverage and known limitations. macOS and Linux are not currently supported.
 
@@ -40,18 +40,20 @@ Batch operations are AI orchestration of multiple calls, not a dedicated one-cli
 | Windows + Firefox | Discovery, persistent lifecycle and HTTP proxy tested; no plugin CDP, recording or extension-library support |
 | macOS / Linux | The current Host rejects these platforms; contributions welcome |
 
-The public v0.1.0 source snapshot passed its build, syntax checks and **141/141 automated tests**. The latest Windows integration run passed HTTP proxy checks for all four browsers and recording/extension assertions for the three Chromium browsers. See [testing notes](docs/TESTING.md) for coverage and failures. Results do not guarantee compatibility with every browser version, extension or website.
+Version 0.1.2 passed its build, syntax checks and **141/141 automated tests** with Harness `0.2.1-rc.5` dependencies and restores embedded browser brand icons. Live checks during the rc.5 compatibility update covered installation, AI query tools, Client slot registration and existing-data reads. Visual display after the icon fix has not been independently rechecked. Earlier Windows integration tests on rc.3 passed HTTP proxy checks for all four browsers and recording/extension assertions for the three Chromium browsers. See [testing notes](docs/TESTING.md) for coverage and failures. Results do not guarantee compatibility with every browser version, extension or website.
 
 ## Installation
 
-1. Install **DeepSeek Harness `0.2.1-rc.3`** and a supported browser yourself. Development and standalone scripts require Node.js 22+.
-2. Download `local-dsh-browser-flock-0.1.0.tgz` from this repository's GitHub **Releases**. Optionally verify it against the accompanying SHA-256 checksums.
+1. Install **DeepSeek Harness `0.2.1-rc.5`** and a supported browser yourself. Development and standalone scripts require Node.js 22+. Plugin v0.1.0 targets Harness rc.3.
+2. Download `local-dsh-browser-flock-0.1.2.tgz` from [GitHub Releases v0.1.2](https://github.com/Lmg66/dsh-browser-flock/releases/tag/v0.1.2). Verify it against the accompanying SHA-256 checksums. To build from source, run `pnpm install --frozen-lockfile --ignore-scripts`, then `pnpm pack --pack-destination releases`.
 3. Ask Harness to install it, using the actual local path:
 
 ```text
 Use plugin_manager install_bundle to install this Browser Flock plugin:
-C:\Downloads\local-dsh-browser-flock-0.1.0.tgz
+C:\Downloads\local-dsh-browser-flock-0.1.2.tgz
 Check application, warnings and nextStep in the installation result.
+If it returns already-installed, remove the @local/dsh-browser-flock installation entry
+with remove_bundle before installing the new package. Preserve existing browser data.
 ```
 
 After successful application, refresh Harness and look for **Browser Flock** in the sidebar.
@@ -138,7 +140,7 @@ AI-assisted contributions are welcome, especially platform/browser adaptations, 
 
 ## Screenshots
 
-These real screenshots supplied by the user show instance management, local browser discovery and recording details. They come from the existing installation; the v0.1.0 distribution uses original letter icons, so its icons differ from those pictured.
+These real screenshots supplied by the user show instance management, local browser discovery and recording details. Version 0.1.2 restores browser brand icons and embeds them in the distribution for offline display.
 
 ### Instances
 

@@ -1,6 +1,19 @@
 # Testing / 测试说明
 
-## Evidence and scope
+## Browser icon distribution fix (v0.1.2)
+
+The release restores Chrome, Edge, Brave and Firefox brand artwork and embeds all four images directly into the generated Client. Decoded data URI bytes were compared with each source asset. Build, manifest/JavaScript checks and all 141 automated tests passed. Runtime dependencies were repaired after a Windows EPERM during local tarball replacement; the source-linked bundle was then re-enabled with `application: applied`. The connected Client did not yet show a fresh registration after replacement, so visual display is pending a page refresh and is not claimed as verified. Existing profile and recording directory counts remained 15 and 12. No browser lifecycle integration run was added for this visual change.
+
+## Harness rc.5 compatibility update (v0.1.1)
+
+- Updated the exact DSH engine requirement and all three direct DSH dependencies from `0.2.1-rc.3` to `0.2.1-rc.5`; regenerated the dependency lockfile. Version 0.1.0 remains the rc.3 release.
+- Checked the installed rc.5 implementations and live contracts for tool execution, sandbox policy, approval, Typert invocation codecs and Client slots. No Host/Client API rewrite or data-schema migration was needed.
+- Client build, JavaScript/manifest checks and all 141 automated tests passed with rc.5 dependencies (0 failed, 0 skipped).
+- The existing incompatible local development bundle was removed through plugin management and replaced with v0.1.1. Installation returned `application: applied` with no warnings. Both the sidebar entry and main panel registered as active in the connected Harness Client.
+- Live AI tools successfully queried browser installations, saved instances, proxy presets, extension library and recordings. Existing browser-profile and recording directory counts were unchanged, and the ownership ledger hash was unchanged. No browser was opened or closed for this compatibility check.
+- Visual layout and a fresh full browser lifecycle/recording/extension integration matrix were not rerun for this dependency-only update. The matrix below remains historical rc.3 evidence.
+
+## Evidence and scope (v0.1.0)
 
 The browser integration results below were collected on Windows with DSH `0.2.1-rc.3` before release packaging. Version `0.1.0` adds public documentation, MIT metadata and original letter icons, and rebuilds the client without changing Host lifecycle logic. The user subsequently confirmed that the GUI works and provided screenshots of instances, local browsers and recording details. The earlier missing-Client-registration observation is superseded by this confirmation.
 
